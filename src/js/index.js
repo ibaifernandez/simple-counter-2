@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom";
-import "../styles/index.css";
-import Home from "./component/home.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-ReactDOM.render(<Home />, document.querySelector("#app"));
+import Provider from "./context/Provider.jsx";
+
+import "../styles/index.css";
+
+import Layout from "./component/Layout.jsx";
+
+const App = () => {
+    return (
+        <BrowserRouter>
+            <Provider>
+                <Routes>
+                    <Route path="/" element={<Layout />} />
+                </Routes>
+            </Provider>
+        </BrowserRouter>
+    );
+};
+
+ReactDOM.render(<App />, document.querySelector("#app"));
